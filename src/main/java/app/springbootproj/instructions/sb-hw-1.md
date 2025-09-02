@@ -54,7 +54,7 @@ Do not generate the `id` in the model itself. The controller will handle `id` ge
 - `List<JellyBean> getAll();`
     - Returns all beans stored.
 - `Optional<JellyBean> getById(String id);`
-    - Returns the bean with the given id, or empty if not found.
+    - Retu**rns the bean** with the given id, or empty if not found.
 - `Optional<JellyBean> replace(String id, JellyBean bean);`
     - Replaces `color` and `flavor` of the bean with this id. Returns updated bean if found.
 - `boolean deleteById(String id);`
