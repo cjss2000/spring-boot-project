@@ -8,8 +8,11 @@ import java.util.List;
 @Service
 
 public class JellyBeanServiceImpl implements JellyBeanService {
-    List<JellyBean> list = new ArrayList();
-
+   // List<JellyBean> list = new ArrayList();
+    private ArrayList<JellyBean> list;
+    public JellyBeanServiceImpl(){
+        this.list = new ArrayList<JellyBean>();
+    }
     @Override
     public JellyBean add(JellyBean bean){
         for (JellyBean j : list){
