@@ -17,10 +17,11 @@ JellyBeanServiceImpl js = new JellyBeanServiceImpl();
 
     }
 
-    @PostMapping("jellybeans")
+    @PostMapping("/jellybeans")
     public JellyBean createBean() {
-        JellyBean jellyBean = new JellyBean();
-        jellyBean.setId(UUID.randomUUID().toString());
+        String newUUID = UUID.randomUUID().toString();
+        JellyBean jellyBean = new JellyBean(newUUID);
+      //  jellyBean.setId(UUID.randomUUID().toString());
         js.add(jellyBean);
         return jellyBean;
 
