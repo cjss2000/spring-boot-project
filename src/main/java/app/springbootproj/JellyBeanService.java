@@ -9,8 +9,10 @@ public interface JellyBeanService {
 
     List<JellyBean> getAll();
 
-    boolean deleteById(int id);
+    boolean deleteById(String id);
 
     void deleteAll();
+
+    String getbyId(String id);
 
 }

@@ -19,7 +19,6 @@ public class JellyBeanServiceImpl implements JellyBeanService {
             list.add(bean);
         }
         return bean;
-        //why won't a to string method work here?
     }
 
     @Override
@@ -31,7 +30,17 @@ public class JellyBeanServiceImpl implements JellyBeanService {
     }
 
     @Override
-    public boolean deleteById(int id){
+    public String getbyId(String id){
+        for (JellyBean j : list){
+            if (j.getId() == id){
+                System.out.println(id);
+            }
+        }
+        return id;
+    }
+
+    @Override
+    public boolean deleteById(String id){
         for (JellyBean jellyBean : list){
             if (jellyBean.getId() == id){
                 list.remove(id);

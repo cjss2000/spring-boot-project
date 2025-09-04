@@ -15,5 +15,5 @@ public class JellyBean {
 
     private String color;
     private String flavor;
-    private int id;
+    private String id;
 }
