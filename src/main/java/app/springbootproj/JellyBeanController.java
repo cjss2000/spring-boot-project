@@ -20,7 +20,7 @@ JellyBeanServiceImpl js = new JellyBeanServiceImpl();
     @PostMapping("/jellybeans")
     public JellyBean createBean() {
         String newUUID = UUID.randomUUID().toString();
-        JellyBean jellyBean = new JellyBean(newUUID);
+        JellyBean jellyBean = new JellyBean();
       //  jellyBean.setId(UUID.randomUUID().toString());
         js.add(jellyBean);
         return jellyBean;

@@ -32,7 +32,7 @@ public class JellyBeanServiceImpl implements JellyBeanService {
     @Override
     public String getbyId(String id){
         for (JellyBean j : list){
-            if (j.getId() == id){
+            if (j.getId().equals(id)){
                 System.out.println(id);
             }
         }
@@ -42,7 +42,7 @@ public class JellyBeanServiceImpl implements JellyBeanService {
     @Override
     public boolean deleteById(String id){
         for (JellyBean jellyBean : list){
-            if (jellyBean.getId() == id){
+            if (jellyBean.getId().equals(id)){
                 list.remove(id);
 
             }
