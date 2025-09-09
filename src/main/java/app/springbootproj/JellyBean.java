@@ -9,9 +9,20 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
+
 public class JellyBean {
+
+    JellyBean(){}
+    JellyBean(String color, String flavor,String id){
+        this.color = color;
+        this.flavor = flavor;
+        this.id = id;
+    }
+    private String color;
+    private String flavor;
+    private String id;
     public String getColor() {
         return color;
     }
@@ -36,7 +47,5 @@ public class JellyBean {
         this.id = id;
     }
 
-    private String color;
-    private String flavor;
-    private String id;
+
 }
