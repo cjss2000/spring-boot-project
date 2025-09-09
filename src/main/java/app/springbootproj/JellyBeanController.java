@@ -28,7 +28,7 @@ JellyBeanServiceImpl js = new JellyBeanServiceImpl();
         return jellyBean;
 
     }
-    @PostMapping("/repalcebean/{id}")
+    @PostMapping("/replacebean/{id}")
     public JellyBean replaceBean(@PathVariable String id){
         JellyBean jellyBean = null;
             String color = "yellow";
