@@ -11,22 +11,21 @@ public class JellyBeanServiceImpl implements JellyBeanService {
    // List<JellyBean> list = new ArrayList();
     private ArrayList<JellyBean> list;
     public JellyBeanServiceImpl(){
-        this.list = new ArrayList<JellyBean>();
+        this.list = new ArrayList<>();
     }
     @Override
     public JellyBean add(JellyBean bean){
-        for (JellyBean j : list){
-            list.add(bean);
-        }
+        list.add(bean);
         return bean;
     }
 
     @Override
-   public  List<JellyBean> getAll(){
+   public String getAll(){
+        String allBeans = "";
         for (JellyBean j : list){
-            System.out.println(j);
+           allBeans = j.getId() + "flavor " + j.getFlavor() +  " color " + j.getColor();
         }
-       return list;
+       return allBeans;
     }
 
     @Override

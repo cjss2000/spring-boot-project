@@ -7,7 +7,7 @@ public interface JellyBeanService {
 
     JellyBean add(JellyBean bean);
 
-    List<JellyBean> getAll();
+    String getAll();
 
     boolean deleteById(String id);
 

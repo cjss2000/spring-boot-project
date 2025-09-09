@@ -10,9 +10,9 @@ public class JellyBeanController {
 
 JellyBeanServiceImpl js = new JellyBeanServiceImpl();
 
-    @GetMapping("/jellybeans")
+    @GetMapping("/allbeans")
     public String getallBeans(){
-        String myBeans = js.getAll().toString();
+        String myBeans = js.getAll();
         return myBeans;
 
 
@@ -24,12 +24,21 @@ JellyBeanServiceImpl js = new JellyBeanServiceImpl();
         String color = "red";
         String flavor = "banana";
         JellyBean jellyBean = new JellyBean(newUUID, color, flavor);
-      //  jellyBean.setId(UUID.randomUUID().toString());
         js.add(jellyBean);
         return jellyBean;
 
     }
-
+    @PostMapping("/repalcebean/{id}")
+    public JellyBean replaceBean(@PathVariable String id){
+        JellyBean jellyBean = null;
+            String color = "yellow";
+            String flavor = "popcorn";
+        if (id == js.getbyId(id)){
+            jellyBean = new JellyBean(id, color, flavor);
+            js.add(jellyBean);
+        }
+    return jellyBean;
+    }
     @GetMapping("/jellybeans/{id}")
     public String getBeanbyId(@PathVariable String id){
         if (id == js.getbyId(id)){
