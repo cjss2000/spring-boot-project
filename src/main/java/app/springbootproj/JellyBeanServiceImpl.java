@@ -21,11 +21,7 @@ public class JellyBeanServiceImpl implements JellyBeanService {
     }
 
     @Override
-   public List getAll(){
-
-        for (JellyBean j : list){
-           allBeans = j.getId() + "flavor " + j.getFlavor() +  " color " + j.getColor();
-        }
+   public List<JellyBean> getAll(){
        return list;
     }
 

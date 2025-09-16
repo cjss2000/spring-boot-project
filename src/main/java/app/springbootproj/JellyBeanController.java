@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.UUID;
 
@@ -19,7 +20,6 @@ public class JellyBeanController {
     ResponseEntity<String> getallBeans() {
         String myBeans = js.getAll();
         return new ResponseEntity<>(myBeans, HttpStatus.OK);
-
     }
 
     @PostMapping("/jellybeans")
@@ -34,17 +34,17 @@ public class JellyBeanController {
 
     }
 
-    //    @PostMapping("/replacebean/{id}")
-//    public JellyBean replaceBean(@PathVariable String id){
-//        JellyBean jellyBean = null;
-//        String color = "yellow";
-//        String flavor = "popcorn";
-//        if (id == jellyBeanService.getbyId(id)) {
-//            jellyBean = new JellyBean(id, color, flavor);
-//            jellyBeanService.add(jellyBean);
-//        }
-//    return jellyBean;
-//    }
+        @PostMapping("/replacebean/{id}")
+    public JellyBean replaceBean(@PathVariable String id){
+        JellyBean jellyBean = null;
+        String color = "yellow";
+        String flavor = "popcorn";
+        if (id == jellyBeanService.getbyId(id)) {
+            jellyBean = new JellyBean(id, color, flavor);
+            jellyBeanService.add(jellyBean);
+        }
+    return jellyBean;
+    }
     @GetMapping("/jellybeans/{id}")
     ResponseEntity<String> getBeanbyId(@PathVariable String id) {
         if (id == js.getbyId(id)) {
