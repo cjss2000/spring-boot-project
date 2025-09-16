@@ -1,7 +1,10 @@
 package app.springbootproj;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.UUID;
 
 @RestController
@@ -9,48 +12,49 @@ import java.util.UUID;
 @RequestMapping("/jellybeans/")
 public class JellyBeanController {
 
+    JellyBeanServiceImpl js = new JellyBeanServiceImpl();
     private final JellyBeanService jellyBeanService;
 
-    // TODO: Controllers should be returning ResponseEntity obeject, take a look at this article: https://www.baeldung.com/spring-response-entity
-    // and adjust your endpoints accordingly
-    @GetMapping("/")
-    public String getallBeans() {
-        String myBeans = jellyBeanService.getAll();
-        return myBeans;
+    @GetMapping("/allbeans")
+    ResponseEntity<String> getallBeans() {
+        String myBeans = js.getAll();
+        return new ResponseEntity<>(myBeans, HttpStatus.OK);
+
     }
 
-    // TODO: Return a ResponseEntity here as well + accept @RequestBody - a JellyBean object in the parameters to this method
-    @PostMapping("/")
-    public JellyBean createBean() {
-        String newUUID = UUID.randomUUID().toString();
+    @PostMapping("/jellybeans")
+    ResponseEntity<JellyBean> createBean() {
+        UUID newUUID = UUID.randomUUID();
         String color = "red";
         String flavor = "banana";
         JellyBean jellyBean = new JellyBean(newUUID, color, flavor);
-        jellyBeanService.add(jellyBean);
-        return jellyBean;
+        js.add(jellyBean);
+        return new ResponseEntity<>(jellyBean, HttpStatus.OK);
+        // return new ResponseEntity<>("Jelly Bean has been crreated" + jellyBean, HttpStatus.OK);
 
     }
 
-    // TODO: Return a ResponseEntity here as well + accept @RequestBody - a JellyBean object in the parameters to this method
-    @PostMapping("/update/{id}")
-    public JellyBean replaceBean(@PathVariable String id) {
-        JellyBean jellyBean = null;
-        String color = "yellow";
-        String flavor = "popcorn";
-        if (id == jellyBeanService.getbyId(id)) {
-            jellyBean = new JellyBean(id, color, flavor);
-            jellyBeanService.add(jellyBean);
-        }
-        return jellyBean;
-    }
-
-    // TODO: Return a ResponseEntity here as well
-    @GetMapping("/{id}")
-    public String getBeanbyId(@PathVariable String id) {
-        if (id == jellyBeanService.getbyId(id)) {
+    //    @PostMapping("/replacebean/{id}")
+//    public JellyBean replaceBean(@PathVariable String id){
+//        JellyBean jellyBean = null;
+//        String color = "yellow";
+//        String flavor = "popcorn";
+//        if (id == jellyBeanService.getbyId(id)) {
+//            jellyBean = new JellyBean(id, color, flavor);
+//            jellyBeanService.add(jellyBean);
+//        }
+//    return jellyBean;
+//    }
+    @GetMapping("/jellybeans/{id}")
+    ResponseEntity<String> getBeanbyId(@PathVariable String id) {
+        if (id == js.getbyId(id)) {
             System.out.println("ID has been found");
         }
-        return id;
+        return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
+    @GetMapping("/hello")
+    ResponseEntity<String> printHello() {
+        return new ResponseEntity<>("Howdy Partner!", HttpStatus.OK);
+    }
 }
