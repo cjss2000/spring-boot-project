@@ -1,10 +1,7 @@
 package app.springbootproj;
 
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.UUID;
 
 @RestController
@@ -17,21 +14,21 @@ public class JellyBeanController {
     // TODO: Controllers should be returning ResponseEntity obeject, take a look at this article: https://www.baeldung.com/spring-response-entity
     // and adjust your endpoints accordingly
     @GetMapping("/")
-    public ResponseEntity<String> getallBeans() {
-        String myBeans = jellyBeanService.getAll();
-        return new ResponseEntity<>(myBeans, HttpStatus.OK);
+    public String getallBeans() {
+        String myBeans = jellyBeanService.getAll().toString();
+        return myBeans;
     }
 
     // TODO: Return a ResponseEntity here as well + accept @RequestBody - a JellyBean object in the parameters to this method
     @PostMapping("/")
-    public ResponseEntity<JellyBean> createBean() {
+    public JellyBean createBean() {
+      //  String newUUID = UUID.randomUUID().toString();
         UUID newUUID = UUID.randomUUID();
         String color = "red";
         String flavor = "banana";
         JellyBean jellyBean = new JellyBean(newUUID, color, flavor);
         jellyBeanService.add(jellyBean);
-        return new ResponseEntity<>(jellyBean, HttpStatus.OK);
-        // return new ResponseEntity<>("Jelly Bean has been crreated" + jellyBean, HttpStatus.OK);
+        return jellyBean;
 
     }
 
@@ -41,18 +38,23 @@ public class JellyBeanController {
         JellyBean jellyBean = null;
         String color = "yellow";
         String flavor = "popcorn";
-        if (id == jellyBeanService.getbyId(id)) {
-            jellyBean = new JellyBean(id, color, flavor);
+
+        UUID uuid = UUID.fromString(id);
+
+        if (uuid.equals(jellyBeanService.getbyId(uuid))) {
+            jellyBean = new JellyBean(uuid, color, flavor);
             jellyBeanService.add(jellyBean);
         }
         return jellyBean;
     }
 
-    // TODO: Return a ResponseEntity here as well and change the parameter to a UUID
-    public ResponseEntity<String> getBeanbyId(@PathVariable String id) {
-        if (id == jellyBeanService.getbyId(id)) {
+    // TODO: Return a ResponseEntity here as well
+    @GetMapping("/{id}")
+    public UUID getBeanbyId(@PathVariable UUID id) {
+        if (id.equals(jellyBeanService.getbyId(id))) {
             System.out.println("ID has been found");
         }
-        return new ResponseEntity<>(id, HttpStatus.OK);
+        return id;
     }
+
 }
