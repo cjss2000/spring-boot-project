@@ -14,7 +14,7 @@ public class JellyBeanController {
     private final JellyBeanService jellyBeanService;
 
     // TODO: Controllers should be returning ResponseEntity obeject, take a look at this article: https://www.baeldung.com/spring-response-entity
-    // and adjust your endpoints accordingly /
+    // and adjust your endpoints accordingly //
 
     @GetMapping("/")
     public List<JellyBean> getallBeans() {
