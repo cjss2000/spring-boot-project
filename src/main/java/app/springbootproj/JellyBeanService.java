@@ -11,7 +11,7 @@ public interface JellyBeanService {
     // TODO: getAll method should return a List of JellyBeans
    // String getAll();
 
-    List getAll();
+    List <JellyBean> getAll();
 
     // TODO: change this method to accept UUID
     boolean deleteById(String id);
@@ -19,6 +19,6 @@ public interface JellyBeanService {
     void deleteAll();
 
     // TODO:  change this method to accept UUID and return a JellyBean object
-    UUID getbyId(UUID id);
+    JellyBean getById(UUID id);
 
 }

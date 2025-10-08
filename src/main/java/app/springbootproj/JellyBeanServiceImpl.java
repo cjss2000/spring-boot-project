@@ -26,13 +26,13 @@ public class JellyBeanServiceImpl implements JellyBeanService {
     }
 
     @Override
-    public UUID getbyId(UUID id){
+    public JellyBean getById(UUID id){
         for (JellyBean j : list){
             if (j.getId().equals(id)){
-                System.out.println(id);
+                return j;
             }
         }
-        return id;
+        return null;
     }
 
     @Override
