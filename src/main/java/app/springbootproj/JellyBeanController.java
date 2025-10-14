@@ -47,11 +47,8 @@ public class JellyBeanController {
 
     // TODO: Return a ResponseEntity here as well
     @GetMapping("/{id}")
-    public UUID getBeanbyId(@PathVariable UUID id) {
-        if (id.equals(jellyBeanService.getById(id))) {
-            System.out.println("ID has been found");
-        }
-        return id;
+    public JellyBean getBeanbyId(@PathVariable UUID id, @RequestBody JellyBean jellybean){
+        jellybean = jellyBeanService.getById(id);
+        return jellybean;
     }
-
 }
