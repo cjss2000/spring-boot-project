@@ -1,5 +1,6 @@
 package app.springbootproj;
 
+import app.springbootproj.model.JellyBean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

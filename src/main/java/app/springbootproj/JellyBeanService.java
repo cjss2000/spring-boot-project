@@ -1,5 +1,7 @@
 package app.springbootproj;
 
+import app.springbootproj.model.JellyBean;
+
 import java.util.List;
 import java.util.UUID;
 

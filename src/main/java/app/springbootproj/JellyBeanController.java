@@ -1,5 +1,6 @@
 package app.springbootproj;
 
+import app.springbootproj.model.JellyBean;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
